@@ -10,7 +10,7 @@ import 'package:mosh_portfolio_flutter/widget/custom_appbar.dart';
 import 'package:provider/provider.dart';
 
 class HomeApp extends StatefulWidget {
-  const HomeApp({Key? key}) : super(key: key);
+  const HomeApp({Key key}) : super(key: key);
 
   @override
   _HomeAppState createState() => _HomeAppState();
@@ -18,7 +18,7 @@ class HomeApp extends StatefulWidget {
 
 class _HomeAppState extends State<HomeApp> {
   // ScrollController? _scrollController;
-  PageController? _pageController;
+  PageController _pageController;
 
   var screenList = const [
     HomeScreen(),
@@ -40,7 +40,7 @@ class _HomeAppState extends State<HomeApp> {
       ..addListener(() {
         var provider =
             Provider.of<ScrollOffsetNotifier>(context, listen: false);
-        provider.setOffSet(_pageController!.offset);
+        provider.setOffSet(_pageController.offset);
       });
   }
 

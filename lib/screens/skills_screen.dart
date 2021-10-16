@@ -4,7 +4,7 @@ import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.da
 import 'package:mosh_portfolio_flutter/widget/skills_progress.dart';
 
 class SkillsScreen extends StatefulWidget {
-  const SkillsScreen({Key? key}) : super(key: key);
+  const SkillsScreen({Key key}) : super(key: key);
 
   @override
   _SkillsScreenState createState() => _SkillsScreenState();

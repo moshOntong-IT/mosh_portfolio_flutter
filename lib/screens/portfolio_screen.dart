@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class PortfolioScreens extends StatefulWidget {
-  const PortfolioScreens({Key? key}) : super(key: key);
+  const PortfolioScreens({Key key}) : super(key: key);
 
   @override
   _PortfolioScreensState createState() => _PortfolioScreensState();
@@ -18,7 +18,6 @@ class _PortfolioScreensState extends State<PortfolioScreens> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return LayoutBuilder(
       builder: (_, constraint) {
         if (constraint.maxHeight >= 480) {

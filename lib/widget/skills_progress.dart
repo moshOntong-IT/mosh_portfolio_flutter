@@ -5,9 +5,9 @@ class SkillsProgess extends StatelessWidget {
   final String title;
   final int value;
   const SkillsProgess({
-    Key? key,
-    required this.title,
-    required this.value,
+    Key key,
+    @required this.title,
+    @required this.value,
   }) : super(key: key);
 
   @override
