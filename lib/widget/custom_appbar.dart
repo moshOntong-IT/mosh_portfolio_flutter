@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 class CustomAppBar extends StatelessWidget {
   final double scrollOffSet;
   final Function func;
-  const CustomAppBar({Key key, this.scrollOffSet = 0.0, @required this.func})
+  const CustomAppBar({Key? key, this.scrollOffSet = 0.0, required this.func})
       : super(key: key);
 
   @override
@@ -37,7 +37,7 @@ class CustomAppBar extends StatelessWidget {
 
 class CustomAppBarDesktop extends StatelessWidget {
   final Function onTap;
-  const CustomAppBarDesktop({Key key, @required this.onTap}) : super(key: key);
+  const CustomAppBarDesktop({Key? key, required this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

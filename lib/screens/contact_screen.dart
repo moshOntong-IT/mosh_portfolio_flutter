@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mapbox_gl/mapbox_gl.dart';
 
 class ContactScreen extends StatefulWidget {
-  const ContactScreen({Key key}) : super(key: key);
+  const ContactScreen({Key? key}) : super(key: key);
 
   @override
   _ContactScreenState createState() => _ContactScreenState();
@@ -12,22 +11,6 @@ class _ContactScreenState extends State<ContactScreen> {
   final address = 'Davao City Jail Rd, Talomo, Davao City, Davao del Sur';
   final apiKey =
       'pk.eyJ1IjoibW9zaG9udG9uZ3VpYyIsImEiOiJja3V0eXU0YXUwaWlrMm9tcGRkdGlvOGo0In0.XgIY8myEV2-UQSUJ_69CNA';
-
-  MapboxMapController _mapController;
-  void onMapCreated(controller) {
-    _mapController = controller;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _mapController?.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,18 +22,21 @@ class _ContactScreenState extends State<ContactScreen> {
               Expanded(
                 child: Row(
                   children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: MapboxMap(
-                          accessToken: apiKey,
-                          onMapCreated: onMapCreated,
-                          initialCameraPosition: const CameraPosition(
-                            target: LatLng(7.207573, 125.395874),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Expanded(
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.all(20),
+                    //     child: MapboxMap(
+                    //       accessToken: apiKey,
+                    //       onMapCreated: onMapCreated,
+                    //       onStyleLoadedCallback: () =>
+                    //           addCircle(_mapController),
+                    //       initialCameraPosition: const CameraPosition(
+                    //         target: LatLng(7.207573, 125.395874),
+                    //         zoom: 14,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

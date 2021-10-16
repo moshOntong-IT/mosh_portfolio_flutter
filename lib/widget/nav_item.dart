@@ -5,7 +5,7 @@ class NavItem extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
 
-  const NavItem({Key key, @required this.title, @required this.onTap})
+  const NavItem({Key? key, required this.title, required this.onTap})
       : super(key: key);
 
   @override
