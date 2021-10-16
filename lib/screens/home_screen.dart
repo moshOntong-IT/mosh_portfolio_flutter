@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             SizedBox(
                               height: 30,
-                              width: 180,
+                              width: 200,
                               child: DefaultTextStyle(
                                 style: const TextStyle(
                                   fontSize: 20,
