@@ -3,6 +3,7 @@ import 'package:mosh_portfolio_flutter/provider/scroll_offset.dart';
 import 'package:mosh_portfolio_flutter/screens/about_screen.dart';
 import 'package:mosh_portfolio_flutter/screens/contact_screen.dart';
 import 'package:mosh_portfolio_flutter/screens/home_screen.dart';
+import 'package:mosh_portfolio_flutter/screens/portfolio_screen.dart';
 import 'package:mosh_portfolio_flutter/screens/services_screen.dart';
 import 'package:mosh_portfolio_flutter/screens/skills_screen.dart';
 import 'package:mosh_portfolio_flutter/widget/custom_appbar.dart';
@@ -24,6 +25,7 @@ class _HomeAppState extends State<HomeApp> {
     AboutScreen(),
     ServicesScreen(),
     SkillsScreen(),
+    PortfolioScreens(),
     ContactScreen()
   ];
 
