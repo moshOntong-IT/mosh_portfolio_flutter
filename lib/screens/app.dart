@@ -74,29 +74,33 @@ class _HomeAppState extends State<HomeApp> {
             ],
           ),
         ),
-        child: PageView(
-          physics: const ClampingScrollPhysics(),
+        child: Scrollbar(
           controller: _pageController,
-          pageSnapping: false,
-          scrollDirection: Axis.vertical,
-          onPageChanged: (index) {
-            WidgetsBinding.instance?.focusManager.primaryFocus?.unfocus();
-          },
-          children: List.generate(
-            screenList.length,
-            (index) {
-              return SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: double.maxFinite,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [Expanded(child: screenList[index])],
-                  ),
-                ),
-              );
+          isAlwaysShown: true,
+          child: PageView(
+            physics: const ClampingScrollPhysics(),
+            controller: _pageController,
+            pageSnapping: false,
+            scrollDirection: Axis.vertical,
+            onPageChanged: (index) {
+              WidgetsBinding.instance?.focusManager.primaryFocus?.unfocus();
             },
+            children: List.generate(
+              screenList.length,
+              (index) {
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: double.maxFinite,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [Expanded(child: screenList[index])],
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),
