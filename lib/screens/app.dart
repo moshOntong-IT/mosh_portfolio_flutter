@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mosh_portfolio_flutter/provider/scroll_offset.dart';
+import 'package:mosh_portfolio_flutter/screens/about_screen.dart';
+import 'package:mosh_portfolio_flutter/screens/contact_screen.dart';
+import 'package:mosh_portfolio_flutter/screens/home_screen.dart';
+import 'package:mosh_portfolio_flutter/screens/services_screen.dart';
+import 'package:mosh_portfolio_flutter/screens/skills_screen.dart';
 import 'package:mosh_portfolio_flutter/widget/custom_appbar.dart';
 import 'package:provider/provider.dart';
 
@@ -11,18 +16,24 @@ class HomeApp extends StatefulWidget {
 }
 
 class _HomeAppState extends State<HomeApp> {
-  ScrollController? _scrollController;
+  // ScrollController? _scrollController;
   PageController? _pageController;
 
-  var list = ["HOME", "ABOUT", "SERVICES", "SKILLS", "PORTFOLIO", "CONTACT"];
+  var screenList = const [
+    HomeScreen(),
+    AboutScreen(),
+    ServicesScreen(),
+    SkillsScreen(),
+    ContactScreen()
+  ];
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController()
-      ..addListener(() {
-        Provider.of<ScrollOffsetNotifier>(context, listen: false);
-      });
+    // _scrollController = ScrollController()
+    //   ..addListener(() {
+    //     Provider.of<ScrollOffsetNotifier>(context, listen: false);
+    //   });
     _pageController = PageController()
       ..addListener(() {
         var provider =
@@ -33,7 +44,7 @@ class _HomeAppState extends State<HomeApp> {
 
   @override
   void dispose() {
-    _scrollController?.dispose();
+    // _scrollController?.dispose();
     _pageController?.dispose();
     super.dispose();
   }
@@ -64,19 +75,24 @@ class _HomeAppState extends State<HomeApp> {
           ),
         ),
         child: PageView(
+          physics: const ClampingScrollPhysics(),
           controller: _pageController,
           pageSnapping: false,
           scrollDirection: Axis.vertical,
+          onPageChanged: (index) {
+            WidgetsBinding.instance?.focusManager.primaryFocus?.unfocus();
+          },
           children: List.generate(
-            list.length,
+            screenList.length,
             (index) {
-              return Container(
+              return SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: double.maxFinite,
-                child: Center(
-                  child: Text(
-                    list[index],
-                    style: TextStyle(color: Colors.black, fontSize: 50),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [Expanded(child: screenList[index])],
                   ),
                 ),
               );
@@ -90,6 +106,6 @@ class _HomeAppState extends State<HomeApp> {
   void _scrollToIndex() {
     var provider = Provider.of<ScrollOffsetNotifier>(context, listen: false);
     _pageController?.animateToPage(provider.index,
-        duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
+        duration: const Duration(seconds: 2), curve: Curves.easeIn);
   }
 }

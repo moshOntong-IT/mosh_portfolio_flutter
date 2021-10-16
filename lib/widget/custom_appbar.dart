@@ -13,14 +13,22 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //TODO add box shadow later
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 24.0),
-      color: Colors.white.withOpacity(
-        (scrollOffSet / 350).clamp(0, 1).toDouble(),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(
+          (scrollOffSet / 350).clamp(0, 1).toDouble(),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: const Color.fromRGBO(134, 240, 235, 0.09).withOpacity(
+              (scrollOffSet / 350).clamp(0, 1).toDouble(),
+            ),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: CustomAppBarDesktop(onTap: () {
-        var provider =
-            Provider.of<ScrollOffsetNotifier>(context, listen: false);
         func();
       }),
     );
