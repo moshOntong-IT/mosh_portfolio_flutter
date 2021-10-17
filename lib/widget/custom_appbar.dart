@@ -73,6 +73,9 @@ class CustomAppBarDesktop extends StatelessWidget {
                       var provider = Provider.of<ScrollOffsetNotifier>(context,
                           listen: false);
 
+                      if (provider.page != 1) {
+                        provider.setPage(1);
+                      }
                       provider.setIndex(1);
                       onTap();
                     },
@@ -83,6 +86,9 @@ class CustomAppBarDesktop extends StatelessWidget {
                       var provider = Provider.of<ScrollOffsetNotifier>(context,
                           listen: false);
 
+                      if (provider.page != 1) {
+                        provider.setPage(1);
+                      }
                       provider.setIndex(2);
                       onTap();
                     },
@@ -93,6 +99,9 @@ class CustomAppBarDesktop extends StatelessWidget {
                       var provider = Provider.of<ScrollOffsetNotifier>(context,
                           listen: false);
 
+                      if (provider.page != 1) {
+                        provider.setPage(1);
+                      }
                       provider.setIndex(3);
                       onTap();
                     },
@@ -103,12 +112,34 @@ class CustomAppBarDesktop extends StatelessWidget {
                       var provider = Provider.of<ScrollOffsetNotifier>(context,
                           listen: false);
 
+                      if (provider.page != 1) {
+                        provider.setPage(1);
+                      }
                       provider.setIndex(4);
                       onTap();
                     },
                   ),
+                  NavItem(
+                    title: 'LOCATION',
+                    onTap: () {
+                      var provider = Provider.of<ScrollOffsetNotifier>(context,
+                          listen: false);
+
+                      if (provider.scrollOffSet != 0.0) {
+                        provider.setOffSet(0.0);
+                      }
+                      provider.setPage(2);
+                    },
+                  ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      var provider = Provider.of<ScrollOffsetNotifier>(context,
+                          listen: false);
+                      if (provider.scrollOffSet != 0.0) {
+                        provider.setOffSet(0.0);
+                      }
+                      provider.setPage(3);
+                    },
                     style: ElevatedButton.styleFrom(
                       primary: const Color(0xFFFF9F1C),
                       shape: RoundedRectangleBorder(

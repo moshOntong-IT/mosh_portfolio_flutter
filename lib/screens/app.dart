@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mosh_portfolio_flutter/provider/scroll_offset.dart';
 import 'package:mosh_portfolio_flutter/screens/about_screen.dart';
 import 'package:mosh_portfolio_flutter/screens/contact_screen.dart';
+import 'package:mosh_portfolio_flutter/screens/demo_pages_screen.dart';
 import 'package:mosh_portfolio_flutter/screens/home_screen.dart';
+import 'package:mosh_portfolio_flutter/screens/location_screen.dart';
 import 'package:mosh_portfolio_flutter/screens/portfolio_screen.dart';
 import 'package:mosh_portfolio_flutter/screens/services_screen.dart';
 import 'package:mosh_portfolio_flutter/screens/skills_screen.dart';
@@ -26,7 +28,7 @@ class _HomeAppState extends State<HomeApp> {
     ServicesScreen(),
     SkillsScreen(),
     PortfolioScreens(),
-    ContactScreen()
+    ContactScreen(),
   ];
 
   @override
@@ -76,35 +78,72 @@ class _HomeAppState extends State<HomeApp> {
             ],
           ),
         ),
-        child: Scrollbar(
-          controller: _pageController,
-          isAlwaysShown: true,
-          child: PageView(
-            physics: const ClampingScrollPhysics(),
-            controller: _pageController,
-            pageSnapping: false,
-            scrollDirection: Axis.vertical,
-            onPageChanged: (index) {
-              WidgetsBinding.instance?.focusManager.primaryFocus?.unfocus();
-            },
-            children: List.generate(
-              screenList.length,
-              (index) {
-                return SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: double.maxFinite,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [Expanded(child: screenList[index])],
+        child: Consumer<ScrollOffsetNotifier>(builder: (context, value, child) {
+          //TODO try to debug kanang e try ang children ang e return dria
+          if (value.page == 1) {
+            return Scrollbar(
+              controller: _pageController,
+              isAlwaysShown: true,
+              child: PageView(
+                physics: const ClampingScrollPhysics(),
+                controller: _pageController,
+                pageSnapping: false,
+                scrollDirection: Axis.vertical,
+                onPageChanged: (index) {
+                  WidgetsBinding.instance?.focusManager.primaryFocus?.unfocus();
+                },
+                children: List.generate(
+                  screenList.length,
+                  (index) {
+                    return SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: double.maxFinite,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [Expanded(child: screenList[index])],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            );
+          } else if (value.page == 2) {
+            return SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: double.maxFinite,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Expanded(
+                      child: LocationScreen(),
                     ),
-                  ),
-                );
-              },
-            ),
-          ),
-        ),
+                  ],
+                ),
+              ),
+            );
+          } else {
+            return SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: double.maxFinite,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Expanded(
+                      child: DemoPagesScreen(),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }
+        }),
       ),
     );
   }

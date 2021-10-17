@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         create: (context) => ScrollOffsetNotifier(),
         child: const HomeApp(),
       ),
+      initialRoute: "",
     );
   }
 }

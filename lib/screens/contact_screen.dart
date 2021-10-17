@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mosh_portfolio_flutter/widget/map.dart';
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({Key? key}) : super(key: key);
@@ -19,24 +20,18 @@ class _ContactScreenState extends State<ContactScreen> {
         if (constraint.maxHeight >= 480) {
           return Column(
             children: [
+              const SizedBox(
+                height: 100,
+              ),
               Expanded(
                 child: Row(
                   children: [
-                    // Expanded(
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.all(20),
-                    //     child: MapboxMap(
-                    //       accessToken: apiKey,
-                    //       onMapCreated: onMapCreated,
-                    //       onStyleLoadedCallback: () =>
-                    //           addCircle(_mapController),
-                    //       initialCameraPosition: const CameraPosition(
-                    //         target: LatLng(7.207573, 125.395874),
-                    //         zoom: 14,
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Image.asset('assets/images/illustrator-6.png'),
+                      ),
+                    ),
                     Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -110,6 +105,24 @@ class _ContactScreenState extends State<ContactScreen> {
                                       ),
                                     ),
                                   ),
+                                ),
+                                const SizedBox(height: 20),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: SizedBox(
+                                        height: 50,
+                                        child: ElevatedButton(
+                                            onPressed: () {},
+                                            style: ButtonStyle(
+                                                backgroundColor:
+                                                    MaterialStateProperty.all(
+                                                        const Color(
+                                                            0xFFFAAC64))),
+                                            child: const Text('SEND')),
+                                      ),
+                                    )
+                                  ],
                                 )
                               ],
                             ),
