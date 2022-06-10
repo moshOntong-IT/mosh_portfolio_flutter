@@ -72,7 +72,7 @@ class _SkillsScreenState extends State<SkillsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: const [
                         SkillsProgess(
-                          value: 60,
+                          value: 80,
                           title: 'Flutter',
                         ),
                         SkillsProgess(
@@ -90,12 +90,13 @@ class _SkillsScreenState extends State<SkillsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: const [
                         SkillsProgess(
-                          value: 20,
+                          value: 60,
                           title: 'React JS',
                         ),
                         SkillsProgess(
-                          value: 15,
-                          title: 'Database (PostgreSQL, MongoDB, Firebase)',
+                          value: 40,
+                          title:
+                              'Database & Backend Service (PostgreSQL, MongoDB, Firebase, and Appwrite)',
                         )
                       ],
                     ),

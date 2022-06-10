@@ -13,7 +13,11 @@ class _ServicesScreenState extends State<ServicesScreen> {
     'assets/images/illustrator-4.png',
     'assets/images/illustrator-5.png'
   ];
-  final servicesCaption = ['Mobile Design', 'Build Mobile', 'Web to Mobile'];
+  final servicesCaption = [
+    'Mobile Design',
+    'Build Mobile',
+    'Build Cross Platform'
+  ];
   @override
   Widget build(BuildContext context) {
     // final size = MediaQuery.of(context).size;
